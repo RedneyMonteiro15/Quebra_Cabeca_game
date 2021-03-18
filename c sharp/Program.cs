@@ -16,19 +16,25 @@ namespace c_sharp
             switch (op)
             {
                 case 1:
+                    cabecalho("ANIMAIS");
                     Console.WriteLine("Primerio");
                     break;
                 case 2:
+                    cabecalho("PEIXES");
                     Console.WriteLine("Segundo");
                     break;
                 case 3:
+                    cabecalho("NOMES");
                     Console.WriteLine("Terceiro");
                     break;
                 case 4:
+                    cabecalho("SERIES");
                     Console.WriteLine("Quarto");
                     break;
                 default:
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Opção Inválida!!!");
+                    Console.ResetColor();
                     break;
             }
         }
@@ -43,7 +49,9 @@ namespace c_sharp
             total = num - teste.Length;
             direita = (total / 2) + teste.Length;
             esquerda = num - direita;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("{0}{1}", teste.PadLeft(direita, ' '), test.PadRight(esquerda-1, ' '));
+            Console.ResetColor();
         }
         static void cabecalho(string txt)
         {
@@ -55,11 +63,13 @@ namespace c_sharp
         {
             Console.WriteLine("Escolhe sua categoria: ");
             int c = 1;
+            Console.ForegroundColor = ConsoleColor.Blue;
             foreach (string item in lista)
             {
                 Console.WriteLine($"{c} - {item}");
                 c++;
             }
+            Console.ResetColor();
         }
         static int leiaOp(int inf, int sup)
         {
