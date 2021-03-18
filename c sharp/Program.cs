@@ -6,7 +6,6 @@ namespace c_sharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             cabecalho("JOGO DA FORCA");
             menu("Animais", "Peixes", "Nome", "Series");
             linha();
