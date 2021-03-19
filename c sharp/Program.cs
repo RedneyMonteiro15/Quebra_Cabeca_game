@@ -6,6 +6,64 @@ namespace c_sharp
     {
         static void Main(string[] args)
         {
+            string cont = "";
+            string alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string nome = "REDNEY";
+            string nomeMudado = nome;
+            string underline = "_";
+            for(int c = 0; c < nome.Length; c++)
+            {
+                for (int i = 0; i < 26; i++)
+                {
+                    if(nome[c] == alfabeto[i])
+                    {
+                        nomeMudado = nomeMudado.Replace(nome[c], underline[0]);
+                    }
+                }
+            }
+            string teste = nomeMudado;
+
+            //Console.WriteLine(nome);
+            //Console.WriteLine(nomeMudado);
+            //Console.WriteLine(teste);
+            for (int i = 0; i < nome.Length; i++)
+            {
+                Console.Write($"{nomeMudado[i]} ");
+            }
+            Console.WriteLine();
+            string mudar = "R";
+            for (int i = 0; i < nome.Length; i++)
+            {
+                if(nome[i] == mudar[0])
+                {
+                    teste = nome;
+                    cont += nome[i];
+                }
+            }
+            for (int i = 0; i < nome.Length; i++)
+            {
+                if(nome[i] == mudar[0])
+                {
+                    nomeMudado = nome;
+                }
+            }
+            Console.WriteLine(teste);
+            Console.WriteLine(nome);
+            Console.WriteLine(nomeMudado);
+            Console.WriteLine(cont);
+            for (int c = 0; c < teste.Length; c++)
+            {
+                for (int i = 0; i < nome.Length; i++)
+                {
+                    if(cont[c] == nome[i])
+                    {
+                        teste = teste.Replace("");
+                    }
+                }
+            }
+
+
+
             cabecalho("JOGO DA FORCA");
             menu("Animais", "Peixes", "Nome", "Series");
             linha();
