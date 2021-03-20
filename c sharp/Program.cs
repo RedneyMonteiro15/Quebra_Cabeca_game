@@ -16,7 +16,8 @@ namespace c_sharp
                 listaSublinhada.Add('_');
             }
             string mudar = "";
-            int cont = 1;
+            int contV = 0, contF = 0;
+            Console.WriteLine(listaNome.Count);
             while (true)
             {
                 Console.Write("Digite uma Letra: ");
@@ -29,21 +30,17 @@ namespace c_sharp
                         if(listaNome[i] == mudar[c])
                         {
                             listaSublinhada[i] = mudar[c];
+                            contV++;
+                        }else{
+                            contF++;
                         }
                     }
                 }
-                for (int i = 0; i < listaNome.Count; i++)
-                {
-                    Console.Write($"{listaNome[i]} ");
-                }
-                Console.WriteLine("");
                 for (int i = 0; i < listaSublinhada.Count; i++)
                 {
                     Console.Write($"{listaSublinhada[i]} ");
                 }
-                Console.WriteLine("");
-                cont++;
-                if(cont == 6)
+                if(contF == 6 || contV == listaNome.Count)
                 {
                     break;
                 }
