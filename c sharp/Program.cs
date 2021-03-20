@@ -1,66 +1,54 @@
 ﻿using System;
 using System.Threading;
+using System.Collections.Generic;
 namespace c_sharp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string cont = "";
-            string alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            List<char> listaNome = new List<char>();
+            List<char> listaSublinhada = new List<char>();
             string nome = "REDNEY";
-            string nomeMudado = nome;
-            string underline = "_";
-            for(int c = 0; c < nome.Length; c++)
+            for (int i = 0; i < nome.Length; i++)
             {
-                for (int i = 0; i < 26; i++)
+                listaNome.Add(nome[i]);
+                listaSublinhada.Add('_');
+            }
+            string mudar = "";
+            int cont = 1;
+            while (true)
+            {
+                Console.Write("Digite uma Letra: ");
+                string teste = Console.ReadLine();
+                mudar += teste;
+                for (int c = 0; c < mudar.Length; c++)
                 {
-                    if(nome[c] == alfabeto[i])
+                    for (int i = 0; i < listaSublinhada.Count; i++)
                     {
-                        nomeMudado = nomeMudado.Replace(nome[c], underline[0]);
+                        if(listaNome[i] == mudar[c])
+                        {
+                            listaSublinhada[i] = mudar[c];
+                        }
                     }
                 }
-            }
-            string teste = nomeMudado;
-
-            //Console.WriteLine(nome);
-            //Console.WriteLine(nomeMudado);
-            //Console.WriteLine(teste);
-            for (int i = 0; i < nome.Length; i++)
-            {
-                Console.Write($"{nomeMudado[i]} ");
-            }
-            Console.WriteLine();
-            string mudar = "R";
-            for (int i = 0; i < nome.Length; i++)
-            {
-                if(nome[i] == mudar[0])
+                for (int i = 0; i < listaNome.Count; i++)
                 {
-                    teste = nome;
-                    cont += nome[i];
+                    Console.Write($"{listaNome[i]} ");
+                }
+                Console.WriteLine("");
+                for (int i = 0; i < listaSublinhada.Count; i++)
+                {
+                    Console.Write($"{listaSublinhada[i]} ");
+                }
+                Console.WriteLine("");
+                cont++;
+                if(cont == 6)
+                {
+                    break;
                 }
             }
-            for (int i = 0; i < nome.Length; i++)
-            {
-                if(nome[i] == mudar[0])
-                {
-                    nomeMudado = nome;
-                }
-            }
-            Console.WriteLine(teste);
-            Console.WriteLine(nome);
-            Console.WriteLine(nomeMudado);
-            Console.WriteLine(cont);
-            for (int c = 0; c < teste.Length; c++)
-            {
-                for (int i = 0; i < nome.Length; i++)
-                {
-                    if(cont[c] == nome[i])
-                    {
-                        teste = teste.Replace("");
-                    }
-                }
-            }
+    
 
 
 
