@@ -7,54 +7,11 @@ namespace c_sharp
     {
         static void Main(string[] args)
         {
-            List<char> listaNome = new List<char>();
-            List<char> listaSublinhada = new List<char>();
-            string nome = "REDNEY";
-            for (int i = 0; i < nome.Length; i++)
-            {
-                listaNome.Add(nome[i]);
-                listaSublinhada.Add('_');
-            }
-            string mudar = "";
-            int contV = 0, contF = 0;
-            Console.WriteLine(listaNome.Count);
-            while (true)
-            {
-                Console.Write("Digite uma Letra: ");
-                string teste = Console.ReadLine();
-                mudar += teste;
-                for (int c = 0; c < mudar.Length; c++)
-                {
-                    for (int i = 0; i < listaSublinhada.Count; i++)
-                    {
-                        if(listaNome[i] == mudar[c])
-                        {
-                            listaSublinhada[i] = mudar[c];
-                            contV++;
-                        }else{
-                            contF++;
-                        }
-                    }
-                }
-                for (int i = 0; i < listaSublinhada.Count; i++)
-                {
-                    Console.Write($"{listaSublinhada[i]} ");
-                }
-                if(contF == 6 || contV == listaNome.Count)
-                {
-                    break;
-                }
-            }
-    
-
-
-
             cabecalho("JOGO DA FORCA");
             menu("Animais", "Peixes", "Nome", "Series");
             linha();
             int op = leiaOp(1, 4);
             Thread.Sleep(1000);
-            //Console.Clear();
             switch (op)
             {
                 case 1:
@@ -126,6 +83,47 @@ namespace c_sharp
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("ERRO!!! Digite uma opção válida.");
                 Console.ResetColor();
+            }
+        }
+        static void game()
+        {
+            List<char> listaNome = new List<char>();
+            List<char> listaSublinhada = new List<char>();
+            string nome = "REDNEY";
+            for (int i = 0; i < nome.Length; i++)
+            {
+                listaNome.Add(nome[i]);
+                listaSublinhada.Add('_');
+            }
+            Console.WriteLine(listaNome.Count);
+            while (true)
+            {
+                int contV = 0;
+                Console.Write("Digite uma Letra: ");
+                string teste = (Console.ReadLine()).ToUpper();
+                for (int i = 0; i < listaSublinhada.Count; i++)
+                {
+                    if(listaNome[i] == teste[0])
+                    {
+                        listaSublinhada[i] = teste[0];
+                    }
+                }
+                for (int i = 0; i < listaSublinhada.Count; i++)
+                {
+                    if(listaNome[i] == listaSublinhada[i])
+                    {
+                        contV++;
+                    }
+                }
+                for (int i = 0; i < listaSublinhada.Count; i++)
+                {
+                    Console.Write($"{listaSublinhada[i]} ");
+                }
+                Console.WriteLine();
+                if(contV == listaNome.Count)
+                {
+                    break;
+                }
             }
         }
     }
