@@ -7,6 +7,8 @@ namespace c_sharp
     {
         static void Main(string[] args)
         {
+            sublinhado("Mo");
+            game("MONTEIRO");
             cabecalho("JOGO DA FORCA");
             menu("Animais", "Peixes", "Nome", "Series");
             linha();
@@ -85,17 +87,16 @@ namespace c_sharp
                 Console.ResetColor();
             }
         }
-        static void game()
+        static void game(string txt)
         {
-            List<char> listaNome = new List<char>();
+            List<char> listaTexto = new List<char>();
             List<char> listaSublinhada = new List<char>();
-            string nome = "REDNEY";
-            for (int i = 0; i < nome.Length; i++)
+            string texto = txt;
+            for (int i = 0; i < listaSublinhada.Count; i++)
             {
-                listaNome.Add(nome[i]);
-                listaSublinhada.Add('_');
+                Console.Write($"{listaSublinhada[i]} ");
             }
-            Console.WriteLine(listaNome.Count);
+            Console.WriteLine();
             while (true)
             {
                 int contV = 0;
@@ -103,28 +104,42 @@ namespace c_sharp
                 string teste = (Console.ReadLine()).ToUpper();
                 for (int i = 0; i < listaSublinhada.Count; i++)
                 {
-                    if(listaNome[i] == teste[0])
+                    if(listaTexto[i] == teste[0])
                     {
                         listaSublinhada[i] = teste[0];
                     }
                 }
                 for (int i = 0; i < listaSublinhada.Count; i++)
                 {
-                    if(listaNome[i] == listaSublinhada[i])
+                    if(listaTexto[i] == listaSublinhada[i])
                     {
                         contV++;
                     }
                 }
+                Thread.Sleep(1000);
+                Console.Clear();
+               
                 for (int i = 0; i < listaSublinhada.Count; i++)
                 {
                     Console.Write($"{listaSublinhada[i]} ");
                 }
                 Console.WriteLine();
-                if(contV == listaNome.Count)
+                if(contV == listaTexto.Count)
                 {
                     break;
                 }
+                Thread.Sleep(800);
             }
+        }
+        static List<char> sublinhado(string texto)
+        {
+            List<char> listaSublinhada = new List<char>();
+            for (int i = 0; i < texto.Length; i++)
+            {
+                listaSublinhada.Add('_');
+            }
+            
+            return listaSublinhada;
         }
     }
 }
