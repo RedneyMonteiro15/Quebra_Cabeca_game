@@ -7,37 +7,34 @@ namespace c_sharp
     {
         static void Main(string[] args)
         {
-            sublinhado("Mo");
-            game("MONTEIRO");
+            Random aleatorio = new Random();
+            int teste;
+
+            List<string> listaAnimais = new List<string>(){"ABELHA", "AGUIA", "ARANHA", "ATUM", "AVESTRUZ", "BALEIA", "BORBOLETA", "BURRO", "CABRA", "CACHORRO", "CAMELO", "CAVALO", "COELHO", "CORVO"};
+            List<string> listaNome = new List<string>(){"ALANAH", "SAYURI", "DANIA", "TANIA", "MANUEL", "VANISIA", "ADRIANO", "EDNEY", "SIDNEY", "BRANDAO"};
+            List<string> listaSeries = new List<string>(){"Redney", "Manuel"};
             cabecalho("JOGO DA FORCA");
-            menu("Animais", "Peixes", "Nome", "Series");
-            linha();
-            int op = leiaOp(1, 4);
+            menu("Animais", "Nome");
+            int op = leiaOp(1, 2);
             Thread.Sleep(1000);
+            Console.Clear();
             switch (op)
             {
                 case 1:
-                    cabecalho("ANIMAIS");
-                    Console.WriteLine("Primerio");
+                    teste = aleatorio.Next(0, listaAnimais.Count - 1);
+                    game(listaAnimais[teste], "ANIMAIS");
                     break;
                 case 2:
-                    cabecalho("PEIXES");
-                    Console.WriteLine("Segundo");
-                    break;
-                case 3:
-                    cabecalho("NOMES");
-                    Console.WriteLine("Terceiro");
-                    break;
-                case 4:
-                    cabecalho("SERIES");
-                    Console.WriteLine("Quarto");
-                    break;
+                    teste = aleatorio.Next(0, listaNome.Count - 1);
+                    game(listaNome[teste], "NOME");
+                    break;                
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Opção Inválida!!!");
                     Console.ResetColor();
                     break;
             }
+            cabecalho("FIM DO JOGO");
         }
         static void linha()
         {
@@ -71,6 +68,7 @@ namespace c_sharp
                 c++;
             }
             Console.ResetColor();
+            linha();
         }
         static int leiaOp(int inf, int sup)
         {
@@ -87,11 +85,17 @@ namespace c_sharp
                 Console.ResetColor();
             }
         }
-        static void game(string txt)
+        static void game(string txt, string msg)
         {
+            cabecalho(msg);
             List<char> listaTexto = new List<char>();
             List<char> listaSublinhada = new List<char>();
             string texto = txt;
+            for (int i = 0; i < texto.Length; i++)
+            {
+                listaTexto.Add(texto[i]);
+                listaSublinhada.Add('_');
+            }
             for (int i = 0; i < listaSublinhada.Count; i++)
             {
                 Console.Write($"{listaSublinhada[i]} ");
@@ -118,7 +122,7 @@ namespace c_sharp
                 }
                 Thread.Sleep(1000);
                 Console.Clear();
-               
+                cabecalho(msg);
                 for (int i = 0; i < listaSublinhada.Count; i++)
                 {
                     Console.Write($"{listaSublinhada[i]} ");
@@ -131,15 +135,6 @@ namespace c_sharp
                 Thread.Sleep(800);
             }
         }
-        static List<char> sublinhado(string texto)
-        {
-            List<char> listaSublinhada = new List<char>();
-            for (int i = 0; i < texto.Length; i++)
-            {
-                listaSublinhada.Add('_');
-            }
-            
-            return listaSublinhada;
-        }
+    
     }
 }
