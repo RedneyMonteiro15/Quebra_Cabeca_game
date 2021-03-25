@@ -9,7 +9,6 @@ namespace c_sharp
         {
             Random aleatorio = new Random();
             int teste;
-
             List<string> listaAnimais = new List<string>(){"ABELHA", "AGUIA", "ARANHA", "ATUM", "AVESTRUZ", "BALEIA", "BORBOLETA", "BURRO", "CABRA", "CACHORRO", "CAMELO", "CAVALO", "COELHO", "CORVO"};
             List<string> listaNome = new List<string>(){"ALANAH", "SAYURI", "DANIA", "TANIA", "MANUEL", "VANISIA", "ADRIANO", "EDNEY", "SIDNEY", "BRANDAO"};
             List<string> listaSeries = new List<string>(){"Redney", "Manuel"};
@@ -91,6 +90,7 @@ namespace c_sharp
             List<char> listaTexto = new List<char>();
             List<char> listaSublinhada = new List<char>();
             string texto = txt;
+            int cont = 0;
             for (int i = 0; i < texto.Length; i++)
             {
                 listaTexto.Add(texto[i]);
@@ -106,6 +106,10 @@ namespace c_sharp
                 int contV = 0;
                 Console.Write("Digite uma Letra: ");
                 string teste = (Console.ReadLine()).ToUpper();
+                if(txt.IndexOf(teste) < 0)
+                {
+                    cont++;
+                }
                 for (int i = 0; i < listaSublinhada.Count; i++)
                 {
                     if(listaTexto[i] == teste[0])
@@ -128,7 +132,7 @@ namespace c_sharp
                     Console.Write($"{listaSublinhada[i]} ");
                 }
                 Console.WriteLine();
-                if(contV == listaTexto.Count)
+                if(contV == listaTexto.Count || cont == 6)
                 {
                     break;
                 }
